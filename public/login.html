@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+	 
+	.para{
+    background-color: #FEFFEF;
+    background-repeat: no-repeat center;
+    object-fit:center;
+    margin-left:250px;
+	margin-right:320px;
+	margin-top:50px;
+	margin-bottom:100px;
+	border-style: solid;
+	border-color: black;
+	padding-left: 220px;
+	padding-bottom:200px;
+	padding-top:50px;
+	}
+	input{
+		font-size:20px;
+	}
+	label{
+		font-size:25px;
+	}
+	body{
+		background-color:#FCF6CF;
+	}
+	a{
+		font-size:25px;
+	}
+</style>
+	<script>
+		function check()
+		{
+			if(document.getElementById("usr").value==""||document.getElementById("pass").value=="")
+				{
+					 event.preventDefault();
+					window.alert("enter username and password");
+					return false;
+				}
+			
+		}
+	</script>
+	<title></title><center>
+	<h1>BLOCKCHAIN VOTING SYSTEM</h1></center>
+</head>
+
+<body >
+
+ <div class="para">
+ 	<form action="/myaction" method="POST" onsubmit="return check()">
+    <label for="usermail">User Name</label></br>
+    <input type="text" name="user" placeholder="user_name" id="usr" required></br></br>
+    <label for="password">Password</label></br>
+    <input type="password" name="pwd" placeholder="password" id="pwd" required></br></br>
+    </br>
+    <input type="submit" value="Login"></br></br>
+    <a href="reg.html">Sign Up</a>
+  </div>
+ 
+
+	 
+
+</body>
+</html>

@@ -5,7 +5,7 @@ var mysql = require('mysql');
 const SHA256 = require("crypto-js/sha256");
 //var server = require('http').createServer(app);  
 var io = require('socket.io-client')//(server);
-
+//var io2=require('socket.io-client');
 app.use(express.static(__dirname + '/node_modules'));  
 app.use(express.static(__dirname + 'socket.io-client/dist/socket.io')); 
 var bodyParser = require("body-parser");
@@ -34,6 +34,20 @@ app.get('/',function(req, res){
 });
 var hash=" ";
 
+ app.post('/myaction3', function(req,res){
+var p = req.body.Select_party;
+console.log(p);
+con.query('UPDATE party SET vote = vote+1 WHERE name= ?',p,function(error,res,fields){
+
+});
+//console.log('hi');
+con.query('SELECT * FROM party',function(err,results,f){
+  console.log(results);
+  res.send('Your vote has been recorded.');
+});
+
+
+ });
  
  
 
@@ -43,7 +57,7 @@ app.post('/myaction2',function(req,res){
 var v_id = req.body.voter_id;
 hash =  SHA256( JSON.stringify(v_id) ).toString();
 //console.log(hash);
-var socket = io.connect('http://192.168.1.11:3000');
+var socket = io.connect('http://192.168.1.7:3000');// ADDRESS AND PORT OF SERVER SHOULD BE MENTIONED HERE.
  socket.on('connect', function(data) {
   socket.emit('join', hash);
 });
@@ -76,7 +90,7 @@ socket.on('broad',function(data){
         //con.end();
     });
            
-             res.sendFile(path.join(__dirname + '/public/Voting_recorded.html'));
+             res.sendFile(path.join(__dirname + '/public/voting_page2.html'));
              socket.destroy();
        }
         
